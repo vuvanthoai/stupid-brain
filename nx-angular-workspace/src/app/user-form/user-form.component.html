@@ -1,0 +1,24 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <h3>👶 Children</h3>
+  <div formArrayName="children">
+    <div
+      *ngFor="let childGroup of childrenArray.controls; let i = index"
+      style="border: 1px solid #ccc; padding: 10px; margin-bottom: 10px"
+    >
+      <h4>Child #{{ i + 1 }}</h4>
+
+      <app-child-data
+        [childFormGroup]="childGroup"
+        [index]="i + 1"
+      ></app-child-data>
+
+      <button type="button" (click)="removeChild(i)">Remove Child</button>
+    </div>
+  </div>
+
+  <button type="button" (click)="addChild()">Add New Child</button>
+
+  <hr />
+
+  <button type="submit" [disabled]="userForm.invalid">Submit Form</button>
+</form>

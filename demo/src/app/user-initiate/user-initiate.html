@@ -1,0 +1,44 @@
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <h2>User Initiate Feature</h2>
+
+  <label>
+    Feature Name:
+    <input type="text" formControlName="featureName" />
+  </label>
+
+  <hr />
+
+  <div formArrayName="userDetailsArray">
+    @for (control of userDetailsArray.controls; track control['name']; let i =
+    $index) {
+    <div class="user-details-group">
+      @if (control.hasError('childNameInvalid')) {
+      <div>
+        <p style="color: purple">
+          ❌ Parent Error: Name cannot be 'admin' if age is set.
+        </p>
+      </div>
+      } @if (control.hasError('childFormInvalid') && control.touched) {
+      <p style="color: red">
+        ⚠️ Child Error: Please fill out Name/Age completely.
+      </p>
+      }
+
+      <app-child-information [formControlName]="i"></app-child-information>
+
+      <button type="button" (click)="removeUserDetail(i)">
+        Remove User {{i + 1}}
+      </button>
+      <hr />
+    </div>
+    }
+  </div>
+
+  <button type="button" (click)="addUserDetail()">+ Add New User</button>
+
+  <br /><br />
+  <button type="submit" [disabled]="userForm.invalid">Submit Form</button>
+
+  <p>Form Status: **{{ userForm.status }}**</p>
+  <p>Form Value: {{ userForm.value | json }}</p>
+</form>

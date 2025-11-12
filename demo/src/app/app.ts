@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { UserFormComponent } from './user-form/user-form.component';
+import { UserInitiate } from './user-initiate/user-initiate';
 
 @Component({
-  imports: [RouterModule, UserFormComponent],
+  imports: [RouterModule, UserInitiate],
   selector: 'app-root',
   templateUrl: './app.html',
   styleUrl: './app.scss',

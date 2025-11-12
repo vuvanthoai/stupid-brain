@@ -1,0 +1,25 @@
+<fieldset [formGroup]="form" [disabled]="isDisabled">
+  <legend>User Details</legend>
+  <label>
+    Name:
+    <input type="text" formControlName="name" />
+  </label>
+
+  @let errors = getNameControlErrors(); @if (errors) {
+  <pre>{{errors | json}}</pre>
+  <div>
+    @if (errors['required']) {
+    <small style="color: red">Name is required.</small>
+    } @if (errors['minlength']) {
+    <small style="color: red">Name must be at least 3 characters.</small>
+    } @if (errors['childIsNormalUser']) {
+    <small style="color: red">Child name is normal user.</small>
+    }
+  </div>
+  }
+
+  <label>
+    Age:
+    <input type="number" formControlName="age" />
+  </label>
+</fieldset>
