@@ -1,0 +1,9 @@
+<h3>Table Data</h3>
+<ul>
+  @for (item of dataList; track item) {
+  <li>
+    {{ item.name }}
+    <button (click)="onDelete(item.id)">Delete</button>
+  </li>
+  }
+</ul>

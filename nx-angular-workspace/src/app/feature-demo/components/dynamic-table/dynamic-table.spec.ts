@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { BankSelector } from './bank-selector';
+import { DynamicTable } from './dynamic-table';
 
-describe('BankSelector', () => {
-  let component: BankSelector;
-  let fixture: ComponentFixture<BankSelector>;
+describe('DynamicTable', () => {
+  let component: DynamicTable;
+  let fixture: ComponentFixture<DynamicTable>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [BankSelector],
+      imports: [DynamicTable],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(BankSelector);
+    fixture = TestBed.createComponent(DynamicTable);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
