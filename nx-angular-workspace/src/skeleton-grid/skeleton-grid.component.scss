@@ -1,5 +1,5 @@
 .skeleton-root {
-  display: flex;
+  display: grid;
   width: 100%;
 }
 
@@ -12,7 +12,7 @@
 .flex-column {
   display: flex;
   flex-direction: column;
-  flex: 1; /* Take up remaining space if needed */
+  flex: 1;
 }
 
 .skeleton-item {
