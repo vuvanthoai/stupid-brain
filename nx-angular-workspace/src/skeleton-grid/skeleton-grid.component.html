@@ -1,0 +1,36 @@
+<ng-template #itemTemplate let-items="items" let-parentType="parentType">
+  @for (item of items; track item) {
+  <div
+    [ngClass]="{
+      'skeleton-item': item.type === 'item',
+      'flex-column': item.type === 'column',
+      'flex-row': item.type === 'row',
+      'animate-shimmer': item.type === 'item'
+    }"
+    [style.width]="item.width"
+    [style.height]="item.height"
+    [style.gap]="gap()"
+    [style.border-radius]="item.borderRadius || '8px'"
+  >
+    @if (item.children) {
+    <ng-container
+      *ngTemplateOutlet="
+        itemTemplate;
+        context: { items: item.children, parentType: item.type }
+      "
+    >
+    </ng-container>
+    }
+  </div>
+  }
+</ng-template>
+
+<div class="skeleton-root" [style.gap]="gap()">
+  <ng-container
+    *ngTemplateOutlet="
+      itemTemplate;
+      context: { items: layout(), parentType: 'row' }
+    "
+  >
+  </ng-container>
+</div>
